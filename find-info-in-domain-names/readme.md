@@ -10,9 +10,9 @@ This script is able to search articles mentioning a given term through a list of
 
 Set your api key and cse id in the `config.cfg` file
 
-To get a cse id, create a search engine: https://cse.google.com/cse/all and set it to search the entire web (https://support.google.com/customsearch/answer/2631040?hl=en)
+To get a cse id, create a [search engine](https://cse.google.com/cse/all) and set it to [search the entire web] (https://support.google.com/customsearch/answer/2631040?hl=en)
 
-To get your api key, create a custom search api key on https://console.developers.google.com
+To get your api key, create a custom [search api key](https://console.developers.google.com)
 
 ## Usage
 
