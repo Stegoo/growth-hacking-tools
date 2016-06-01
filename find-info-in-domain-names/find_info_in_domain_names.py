@@ -12,10 +12,10 @@ import bs4 as BeautifulSoup
 
 
 def is_allowed(url, exclude_sites):
-  for site in exclude_sites:
-    if url.find(site) != -1:
-      return False
-  return True
+    for site in exclude_sites:
+        if url.find(site) != -1:
+            return False
+    return True
 
 def get_content(dom_elem):
     if dom_elem is not None:
@@ -75,7 +75,7 @@ def google_search(target_url, search_term, config):
     search = format_search(target_url, search_term)
     query = urllib.parse.urlencode({'q': search})
     url = 'https://www.googleapis.com/customsearch/v1?key=%s&cx=%s&%s' % (api_key, cse_id, query)
-    #print("searching ", search_term " on", url)
+    #print("searching", search_term, "on", url)
     search_response = urllib.request.urlopen(url)
     search_results = search_response.read().decode("utf8")
     results = json.loads(search_results)
@@ -85,7 +85,6 @@ def google_search(target_url, search_term, config):
         for h in hits:
             #check if the search term appears and is worth scrapping
             if is_allowed(h['link'], excluded_sites) and (h['link'].lower().find(search_term) != -1 or h['title'].lower().find(search_term) != -1 or h['snippet'].lower().find(search_term) != -1):
-                print('Found: ', h['link'])
                 result['mentioned'] = True
                 result['link'] = h['link']
                 result['title'] = h['title']
@@ -138,4 +137,5 @@ def main():
     else:
         print('Usage: python3 find_info_in_domain_names.py input_file.csv output_file.csv search_term')
 
-main()
+if __name__ == "__main__":
+    main()

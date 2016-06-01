@@ -31,7 +31,7 @@ def follow_people(api, people, config):
         try:
             person = api.CreateFriendship(screen_name=people[i])
             print(account_name, 'has been followed')
-            count_followed = count_followed + 1
+            count_followed += 1
         except twitter.error.TwitterError as e:
             print('error for ', account_name, e)
             pass
@@ -52,8 +52,9 @@ def main():
             people = parse_file(sys.argv[1])
             follow_people(api, people, config)
         else:
-            print('Please provide the filename')
+            print('Usage: python follow_people_on_twitter.py people_to_follow.csv')
     except Exception as e:
         print('error', e)
 
-main()
+if __name__ == "__main__":
+    main()
